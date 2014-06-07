@@ -77,6 +77,24 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTaoDSLop.Designer.vb">
+      <DependentUpon>frmTaoDSLop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaoDSLop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmthemlop.Designer.vb">
+      <DependentUpon>frmthemlop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmthemlop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmtimkiem.Designer.vb">
+      <DependentUpon>frmtimkiem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmtimkiem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -96,6 +114,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaoDSLop.resx">
+      <DependentUpon>frmTaoDSLop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmthemlop.resx">
+      <DependentUpon>frmthemlop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmtimkiem.resx">
+      <DependentUpon>frmtimkiem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
