@@ -27,6 +27,12 @@ Public Class frmXuatDiem
     End Sub
 
     Private Sub btnLoc_Click(sender As Object, e As EventArgs) Handles btnLoc.Click
+        Dim dt As List(Of BangDiemDTO) = BangDiemBUS.layDiem(cboLop.SelectedValue, cboHocKy.SelectedValue, cboMon.SelectedValue)
+        DataGridView1.DataSource = dt
+        DataGridView1.Columns(0).HeaderText = "Tên học sinh"
+        DataGridView1.Columns(1).HeaderText = "Điểm 15'"
+        DataGridView1.Columns(2).HeaderText = "Điểm 1 tiết"
+        DataGridView1.Columns(3).HeaderText = "Điểm học kỳ"
 
     End Sub
 End Class

@@ -62,6 +62,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BangDiemBUS.vb" />
     <Compile Include="HocKyBUS.vb" />
     <Compile Include="LopBUS.vb" />
     <Compile Include="MonBUS.vb" />

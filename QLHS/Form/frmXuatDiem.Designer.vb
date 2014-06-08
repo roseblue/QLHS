@@ -31,8 +31,6 @@ Partial Class frmXuatDiem
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnLoc = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.btnPrev = New System.Windows.Forms.Button()
-        Me.btnNext = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -112,31 +110,11 @@ Partial Class frmXuatDiem
         Me.DataGridView1.Size = New System.Drawing.Size(626, 256)
         Me.DataGridView1.TabIndex = 4
         '
-        'btnPrev
-        '
-        Me.btnPrev.Location = New System.Drawing.Point(191, 250)
-        Me.btnPrev.Name = "btnPrev"
-        Me.btnPrev.Size = New System.Drawing.Size(70, 25)
-        Me.btnPrev.TabIndex = 5
-        Me.btnPrev.Text = "<"
-        Me.btnPrev.UseVisualStyleBackColor = True
-        '
-        'btnNext
-        '
-        Me.btnNext.Location = New System.Drawing.Point(277, 250)
-        Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(65, 25)
-        Me.btnNext.TabIndex = 6
-        Me.btnNext.Text = ">"
-        Me.btnNext.UseVisualStyleBackColor = True
-        '
         'frmXuatDiem
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(626, 539)
-        Me.Controls.Add(Me.btnNext)
-        Me.Controls.Add(Me.btnPrev)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.btnLoc)
         Me.Controls.Add(Me.Label3)
@@ -161,6 +139,4 @@ Partial Class frmXuatDiem
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents btnLoc As System.Windows.Forms.Button
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents btnPrev As System.Windows.Forms.Button
-    Friend WithEvents btnNext As System.Windows.Forms.Button
 End Class
