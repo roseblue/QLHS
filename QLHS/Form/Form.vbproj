@@ -78,6 +78,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmThayDoiDiem.Designer.vb">
+      <DependentUpon>frmThayDoiDiem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmThayDoiDiem.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmThayDoiTuoi.Designer.vb">
       <DependentUpon>frmThayDoiTuoi.vb</DependentUpon>
     </Compile>
@@ -109,6 +115,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThayDoiDiem.resx">
+      <DependentUpon>frmThayDoiDiem.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThayDoiTuoi.resx">
       <DependentUpon>frmThayDoiTuoi.vb</DependentUpon>

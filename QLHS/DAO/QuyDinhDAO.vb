@@ -7,7 +7,7 @@ Public Class QuyDinhDAO
         If (type = 1) Then
             cmd = New SqlCommand("select * from QuyDinh where TenQD = N'Tuổi nhỏ nhất' or TenQD = N'Tuổi lớn nhất'", conn)
         Else
-            cmd = New SqlCommand("select * from quydinh", conn)
+            cmd = New SqlCommand("select * from quydinh where TenQD = N'Điểm đạt môn'", conn)
 
         End If
 
