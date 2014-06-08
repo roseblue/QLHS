@@ -69,4 +69,24 @@
             _MaLop = value
         End Set
     End Property
+
+    Private _tenlop As String
+    Public Property TenLop() As String
+        Get
+            Return _tenlop
+        End Get
+        Set(value As String)
+            _tenlop = value
+        End Set
+    End Property
+
+    Private _Lop As LopDTO
+    Public Property Lop() As LopDTO
+        Get
+            Return _Lop
+        End Get
+        Set(value As LopDTO)
+            _Lop = value
+        End Set
+    End Property
 End Class

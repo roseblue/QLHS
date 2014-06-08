@@ -28,6 +28,8 @@ Partial Class frmTaoDSLop
         Me.btnxoa = New System.Windows.Forms.Button()
         Me.cblop = New System.Windows.Forms.ComboBox()
         Me.btnnhap = New System.Windows.Forms.Button()
+        Me.btnxemds = New System.Windows.Forms.Button()
+        Me.btnthoat = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'lisths
@@ -48,6 +50,7 @@ Partial Class frmTaoDSLop
         '
         'btnthem
         '
+        Me.btnthem.Enabled = False
         Me.btnthem.Location = New System.Drawing.Point(288, 129)
         Me.btnthem.Name = "btnthem"
         Me.btnthem.Size = New System.Drawing.Size(58, 33)
@@ -57,6 +60,7 @@ Partial Class frmTaoDSLop
         '
         'btnxoa
         '
+        Me.btnxoa.Enabled = False
         Me.btnxoa.Location = New System.Drawing.Point(290, 184)
         Me.btnxoa.Name = "btnxoa"
         Me.btnxoa.Size = New System.Drawing.Size(58, 33)
@@ -74,18 +78,39 @@ Partial Class frmTaoDSLop
         '
         'btnnhap
         '
-        Me.btnnhap.Location = New System.Drawing.Point(552, 356)
+        Me.btnnhap.Enabled = False
+        Me.btnnhap.Location = New System.Drawing.Point(130, 362)
         Me.btnnhap.Name = "btnnhap"
-        Me.btnnhap.Size = New System.Drawing.Size(58, 30)
+        Me.btnnhap.Size = New System.Drawing.Size(58, 21)
         Me.btnnhap.TabIndex = 5
         Me.btnnhap.Text = "Nhập danh sách"
         Me.btnnhap.UseVisualStyleBackColor = True
+        '
+        'btnxemds
+        '
+        Me.btnxemds.Location = New System.Drawing.Point(13, 360)
+        Me.btnxemds.Name = "btnxemds"
+        Me.btnxemds.Size = New System.Drawing.Size(111, 23)
+        Me.btnxemds.TabIndex = 6
+        Me.btnxemds.Text = "Xem danh sách lớp"
+        Me.btnxemds.UseVisualStyleBackColor = True
+        '
+        'btnthoat
+        '
+        Me.btnthoat.Location = New System.Drawing.Point(575, 363)
+        Me.btnthoat.Name = "btnthoat"
+        Me.btnthoat.Size = New System.Drawing.Size(75, 23)
+        Me.btnthoat.TabIndex = 7
+        Me.btnthoat.Text = "Thoát"
+        Me.btnthoat.UseVisualStyleBackColor = True
         '
         'frmTaoDSLop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(662, 398)
+        Me.Controls.Add(Me.btnthoat)
+        Me.Controls.Add(Me.btnxemds)
         Me.Controls.Add(Me.btnnhap)
         Me.Controls.Add(Me.cblop)
         Me.Controls.Add(Me.btnxoa)
@@ -103,4 +128,6 @@ Partial Class frmTaoDSLop
     Friend WithEvents btnxoa As System.Windows.Forms.Button
     Friend WithEvents cblop As System.Windows.Forms.ComboBox
     Friend WithEvents btnnhap As System.Windows.Forms.Button
+    Friend WithEvents btnxemds As System.Windows.Forms.Button
+    Friend WithEvents btnthoat As System.Windows.Forms.Button
 End Class

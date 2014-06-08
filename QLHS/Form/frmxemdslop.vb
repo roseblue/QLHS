@@ -1,15 +1,12 @@
-﻿Imports DTO
-Imports DAO
-Public Class frmtimkiem
+﻿Imports DAO
+Imports DTO
+Public Class frmxemdslop
     Dim ds As List(Of HocSinhDTO)
-    Const PAGE_SIZE As Integer = 6
+    Const PAGE_SIZE As Integer = 10
     Dim curPage As Integer = 1
     Dim numberofpages As Integer
     Dim start As Integer
     Dim endpage As Integer
-    Private Sub btnthoat_Click(sender As Object, e As EventArgs) Handles btnthoat.Click
-        Close()
-    End Sub
 
     Sub setnavigationstate()
         btnnext.Enabled = (curPage < numberofpages)
@@ -18,33 +15,36 @@ Public Class frmtimkiem
         btnfirst.Enabled = (curPage > 1)
     End Sub
 
-    Private Sub btntim_Click(sender As Object, e As EventArgs) Handles btntim.Click
-        Dim hs As New HocSinhDTO
-        hs.HoTen = txtht.Text
-        hs.MaLop = cblop.SelectedValue
-        ds = HocSinhDAO.TimKiem(hs)
-        numberofpages = Math.Ceiling(ds.Count() / PAGE_SIZE)
-        lbpaing.Text = String.Format("{0}/{1}", curPage, numberofpages)
-        gridhs.Rows.Clear()
-        start = 0
-        endpage = PAGE_SIZE - 1
-        For i As Integer = start To endpage
-            gridhs.Rows.Add(i + 1, ds(i).HoTen, ds(i).TenLop, 0, 0)
-        Next
-        setnavigationstate()
-    End Sub
-
-    Private Sub frmtimkiem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub frmxemdslop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'tao combobox
         Dim dslophoc As List(Of LopDTO) = LopDAO.laylop()
-
+      
         cblop.DataSource = dslophoc
         cblop.DisplayMember = "TenLop"
         cblop.ValueMember = "MaLop"
 
+        txtss.Text = LopDAO.laysosshienco(cblop.SelectedValue)
+
         lbpaing.Text = "0/0"
         setnavigationstate()
 
+        loadds(cblop.SelectedValue)
+    End Sub
+
+    Public Sub loadds(ByVal malop As Integer)
+        ds = HocSinhDAO.layhocsinhtheolop(malop)
+        numberofpages = Math.Ceiling(ds.Count() / PAGE_SIZE)
+        lbpaing.Text = String.Format("{0}/{1}", curPage, numberofpages)
+        girdds.Rows.Clear()
+        start = 0
+        endpage = PAGE_SIZE - 1
+        For i As Integer = start To endpage
+            girdds.Rows.Add(i + 1, ds(i).HoTen, ds(i).GioiTinh, ds(i).NgaySinh.Year, ds(i).DiaChi)
+        Next
+        setnavigationstate()
+    End Sub
+    Private Sub btnthoat_Click(sender As Object, e As EventArgs) Handles btnthoat.Click
+        Close()
     End Sub
 
     Private Sub btnnext_Click(sender As Object, e As EventArgs) Handles btnnext.Click
@@ -56,9 +56,9 @@ Public Class frmtimkiem
         If endpage > ds.Count - 1 Then
             endpage = ds.Count - 1
         End If
-        gridhs.Rows.Clear()
+        girdds.Rows.Clear()
         For i As Integer = start To endpage
-            gridhs.Rows.Add(i + 1, ds(i).HoTen, ds(i).TenLop, 0, 0)
+            girdds.Rows.Add(i + 1, ds(i).HoTen, ds(i).GioiTinh, ds(i).NgaySinh.Year, ds(i).DiaChi)
         Next
         setnavigationstate()
     End Sub
@@ -68,10 +68,10 @@ Public Class frmtimkiem
         start = (curPage - 1) * PAGE_SIZE
         endpage = ds.Count - 1
         lbpaing.Text = String.Format("{0}/{1}", curPage, numberofpages)
-        
-        gridhs.Rows.Clear()
+
+        girdds.Rows.Clear()
         For i As Integer = start To endpage
-            gridhs.Rows.Add(i + 1, ds(i).HoTen, ds(i).TenLop, 0, 0)
+            girdds.Rows.Add(i + 1, ds(i).HoTen, ds(i).GioiTinh, ds(i).NgaySinh.Year, ds(i).DiaChi)
         Next
         setnavigationstate()
     End Sub
@@ -81,14 +81,14 @@ Public Class frmtimkiem
         endpage = curPage * PAGE_SIZE - 1
         start = endpage - PAGE_SIZE + 1
         lbpaing.Text = String.Format("{0}/{1}", curPage, numberofpages)
-        
+
         If start <= 0 Then
             start = 0
             endpage = PAGE_SIZE - 1
         End If
-        gridhs.Rows.Clear()
+        girdds.Rows.Clear()
         For i As Integer = start To endpage
-            gridhs.Rows.Add(i + 1, ds(i).HoTen, ds(i).TenLop, 0, 0)
+            girdds.Rows.Add(i + 1, ds(i).HoTen, ds(i).GioiTinh, ds(i).NgaySinh.Year, ds(i).DiaChi)
         Next
         setnavigationstate()
     End Sub
@@ -98,10 +98,15 @@ Public Class frmtimkiem
         start = 0
         endpage = PAGE_SIZE - 1
         lbpaing.Text = String.Format("{0}/{1}", curPage, numberofpages)
-        gridhs.Rows.Clear()
+        girdds.Rows.Clear()
         For i As Integer = start To endpage
-            gridhs.Rows.Add(i + 1, ds(i).HoTen, ds(i).TenLop, 0, 0)
+            girdds.Rows.Add(i + 1, ds(i).HoTen, ds(i).GioiTinh, ds(i).NgaySinh.Year, ds(i).DiaChi)
         Next
         setnavigationstate()
+    End Sub
+
+    Private Sub cblop_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cblop.SelectionChangeCommitted
+        txtss.Text = LopDAO.laysosshienco(cblop.SelectedValue)
+        loadds(cblop.SelectedValue)
     End Sub
 End Class

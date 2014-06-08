@@ -1,10 +1,10 @@
-﻿Imports System.Data.OleDb
-
+﻿
+Imports System.Data.SqlClient
 Public Class DataProvider
-    Public Shared Function ConnectDB() As OleDbConnection
+    Public Shared Function ConnectDB() As SqlConnection
         Dim connectstring As String
-        connectstring = "Provider=SQLNCLI10;Server=MAP;Database=QLHocSinh;Trusted_Connection=yes;"
-        Dim conn As New OleDbConnection(connectstring)
+        connectstring = "Server=MAP;Database=QLHocSinh;Trusted_Connection=True;"
+        Dim conn As New SqlConnection(connectstring)
         conn.Open()
         Return conn
     End Function

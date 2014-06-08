@@ -1,12 +1,12 @@
 ﻿Imports DTO
-Imports System.Data.OleDb
+Imports System.Data.SqlClient
 Public Class KhoiDAO
     Public Shared Function laykhoi() As List(Of KhoiDTO)
         Dim sql = "select MaKhoi,TenKhoi from Khoi"
-        Dim conn As OleDbConnection
+        Dim conn As SqlConnection
         conn = DataProvider.ConnectDB()
-        Dim cmd As New OleDbCommand(sql, conn)
-        Dim reader As OleDbDataReader = cmd.ExecuteReader()
+        Dim cmd As New SqlCommand(sql, conn)
+        Dim reader As SqlDataReader = cmd.ExecuteReader()
 
         Dim ds As New List(Of KhoiDTO)
         While reader.Read()
