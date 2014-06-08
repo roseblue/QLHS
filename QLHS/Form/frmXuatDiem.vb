@@ -1,4 +1,4 @@
-﻿Imports DAO
+﻿Imports BUS
 Imports DTO
 Public Class frmXuatDiem
 
@@ -12,16 +12,16 @@ Public Class frmXuatDiem
     End Sub
 
     Private Sub frmXuatDiem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim lstLop As List(Of LopDTO) = LopDAO.layLop
+        Dim lstLop As List(Of LopDTO) = LopBUS.layLop
         cboLop.DataSource = lstLop
         cboLop.DisplayMember = "TenLop"
         cboLop.ValueMember = "MaLop"
 
-        cboMon.DataSource = MonHocDAO.layMonHoc
+        cboMon.DataSource = MonBUS.layMonHoc
         cboMon.DisplayMember = "TenMonHoc"
         cboMon.ValueMember = "MaMonHoc"
 
-        cboHocKy.DataSource = HocKyDAO.layHK
+        cboHocKy.DataSource = HocKyBUS.layHK
         cboHocKy.DisplayMember = "TenHKDayDU"
         cboHocKy.ValueMember = "MaHK"
     End Sub

@@ -127,9 +127,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAO\DAO.vbproj">
-      <Project>{8fb51cec-85bd-486c-ae8b-f4ea601bbf19}</Project>
-      <Name>DAO</Name>
+    <ProjectReference Include="..\BUS\BUS.vbproj">
+      <Project>{01d6f2b9-ca04-4de9-9c52-dded0ceb22d2}</Project>
+      <Name>BUS</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.vbproj">
       <Project>{25cc38a3-c265-427b-8123-87a079b14597}</Project>
