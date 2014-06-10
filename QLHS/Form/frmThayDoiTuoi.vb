@@ -27,4 +27,16 @@ Public Class frmThayDoiTuoi
 
         End If
     End Sub
+
+    Private Sub nudMax_nudMin_ValueChanged(sender As Object, e As EventArgs) Handles nudMax.ValueChanged, nudMin.ValueChanged
+        If (nudMax.Value <= nudMin.Value) Then
+
+            MessageBox.Show("Tuổi lớn nhất phải lớn hơn tuổi nhỏ nhất", "Thông báo", MessageBoxButtons.OK)
+            If (sender.Equals(nudMax)) Then
+                nudMax.Value += 1
+            Else
+                nudMin.Value -= 1
+            End If
+        End If
+    End Sub
 End Class
