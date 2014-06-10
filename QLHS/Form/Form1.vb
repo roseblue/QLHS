@@ -1,6 +1,5 @@
 ﻿Public Class Form1
     Public Sub New()
-
         ' This call is required by the designer.
         InitializeComponent()
 
