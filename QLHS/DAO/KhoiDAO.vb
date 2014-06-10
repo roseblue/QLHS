@@ -4,8 +4,9 @@ Public Class KhoiDAO
     Public Shared Function laykhoi() As List(Of KhoiDTO)
         Dim sql = "select MaKhoi,TenKhoi from Khoi"
         Dim conn As SqlConnection
-        conn = DataProvider.ConnectDB()
+        conn = DataProvider.getConnection()
         Dim cmd As New SqlCommand(sql, conn)
+        conn.Open()
         Dim reader As SqlDataReader = cmd.ExecuteReader()
 
         Dim ds As New List(Of KhoiDTO)

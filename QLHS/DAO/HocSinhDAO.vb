@@ -8,10 +8,9 @@ Public Class HocSinhDAO
         Dim sql As String
 
         sql = "select HoTen,GioiTinh,NgaySinh,DiaChi from HocSinh where MaLop = " & malop
-
-        Dim conn As SqlConnection = DataProvider.ConnectDB()
+        Dim conn As SqlConnection = DataProvider.getConnection
         Dim cmd As New SqlCommand(sql, conn)
-
+        conn.Open()
         Dim reader As SqlDataReader = cmd.ExecuteReader
         Dim dshs As New List(Of HocSinhDTO)
         While reader.Read()
@@ -22,6 +21,7 @@ Public Class HocSinhDAO
             hocsinh.DiaChi = reader.GetString(3)
             dshs.Add(hocsinh)
         End While
+        conn.Close()
         Return dshs
     End Function
     Public Shared Function capnhaplopchohocsinh(ByVal arr As ArrayList, ByVal malop As Integer) As Integer
@@ -31,8 +31,8 @@ Public Class HocSinhDAO
         Dim count As Integer = 0
         Dim sql As String
         Dim cmd As SqlCommand
-        Dim conn As SqlConnection = DataProvider.ConnectDB()
-
+        Dim conn As SqlConnection = DataProvider.getConnection()
+        conn.Open()
         Dim command As SqlCommand = conn.CreateCommand()
         Dim transaction As SqlTransaction
         transaction = conn.BeginTransaction("SampleTransaction")
@@ -83,9 +83,9 @@ Public Class HocSinhDAO
 
         sql = "select MaHS,HoTen from HocSinh where MaLop is NULL "
 
-        Dim conn As SqlConnection = DataProvider.ConnectDB()
+        Dim conn As SqlConnection = DataProvider.getConnection()
         Dim cmd As New SqlCommand(sql, conn)
-
+        conn.Open()
         Dim reader As SqlDataReader = cmd.ExecuteReader
         Dim dshs As New ArrayList
         While reader.Read()
@@ -94,6 +94,7 @@ Public Class HocSinhDAO
             hocsinh.HoTen = reader.GetString(1)
             dshs.Add(hocsinh)
         End While
+        conn.Close()
         Return dshs
     End Function
 
@@ -107,9 +108,9 @@ Public Class HocSinhDAO
         End If
 
 
-        Dim conn As SqlConnection = DataProvider.ConnectDB()
+        Dim conn As SqlConnection = DataProvider.getConnection()
         Dim cmd As New SqlCommand(sql, conn)
-
+        conn.Open()
         Dim reader As SqlDataReader = cmd.ExecuteReader
         Dim dshs As New List(Of HocSinhDTO)
         While reader.Read()
@@ -124,6 +125,7 @@ Public Class HocSinhDAO
 
             dshs.Add(hocsinh)
         End While
+        conn.Close()
         Return dshs
     End Function
 

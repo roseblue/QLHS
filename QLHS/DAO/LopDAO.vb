@@ -3,7 +3,7 @@ Imports System.Data.SqlClient
 Public Class LopDAO
     Public Shared Function layLop() As List(Of LopDTO)
         Dim conn As SqlConnection = DataProvider.getConnection()
-        Dim cmd As New SqlCommand("select * from Lop", conn)
+        Dim cmd As New SqlCommand("select * from Lop order by Tenlop", conn)
         conn.Open()
         Dim lstLop As New List(Of LopDTO)
         Dim reader As SqlDataReader = cmd.ExecuteReader
@@ -22,6 +22,8 @@ Public Class LopDAO
 
         Return lstLop
 
+
+    End Function
     Public Shared Function laysosshienco(ByVal malop As Integer) As Integer
         Dim sohs = 0
         Dim sql = "select SiSo from Lop where MaLop = " & malop
@@ -34,28 +36,11 @@ Public Class LopDAO
         End With
         Return sohs
     End Function
-    Public Shared Function laylop() As List(Of LopDTO)
-        Dim sql = "select MaLop,TenLop from Lop  order by TenLop"
-        Dim conn As SqlConnection
-        conn = DataProvider.ConnectDB()
-        Dim cmd As New SqlCommand(sql, conn)
-        Dim reader As SqlDataReader = cmd.ExecuteReader()
-
-        Dim ds As New List(Of LopDTO)
-        While reader.Read()
-            Dim lop As New LopDTO
-            lop.MaLop = reader.GetInt32(0)
-            lop.TenLop = reader.GetString(1)
-            ds.Add(lop)
-        End While
-        conn.Close()
-        Return ds
-    End Function
 	
     Public Shared Function themlop(ByVal tenlop As String, ByVal makhoi As Integer) As Integer
         Dim sql As String
         Dim conn As SqlConnection
-        conn = DataProvider.ConnectDB()
+        conn = DataProvider.getConnection
         Dim cmd As SqlCommand
         Dim reader As SqlDataReader
 
