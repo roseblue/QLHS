@@ -29,6 +29,9 @@ Public Class frmtimkiem
         start = 0
         endpage = PAGE_SIZE - 1
         For i As Integer = start To endpage
+            If (i = ds.Count) Then
+                Exit For
+            End If
             gridhs.Rows.Add(i + 1, ds(i).HoTen, ds(i).TenLop, 0, 0)
         Next
         setnavigationstate()

@@ -29,11 +29,14 @@ Public Class LopDAO
         Dim sql = "select SiSo from Lop where MaLop = " & malop
         Dim conn As SqlConnection
         conn = DataProvider.getConnection()
+        conn.Open()
         Dim cmd As New SqlCommand(sql, conn)
         Dim reader As SqlDataReader = cmd.ExecuteReader()
         With reader.Read()
             sohs = reader.GetInt32(0)
         End With
+
+        conn.Close()
         Return sohs
     End Function
 	

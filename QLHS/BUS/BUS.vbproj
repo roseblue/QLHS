@@ -64,6 +64,8 @@
   <ItemGroup>
     <Compile Include="BangDiemBUS.vb" />
     <Compile Include="HocKyBUS.vb" />
+    <Compile Include="HocSinhBUS.vb" />
+    <Compile Include="KhoiBUS.vb" />
     <Compile Include="LopBUS.vb" />
     <Compile Include="MonBUS.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

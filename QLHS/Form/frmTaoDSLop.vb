@@ -23,10 +23,15 @@ Public Class frmTaoDSLop
 
         'lay ds hoc sinh chua co lop
         dshs = HocSinhBUS.layhocsinhchuacolop()
-
-        lisths.DataSource = dshs
-        lisths.DisplayMember = "HoTen"
-        lisths.ValueMember = "MaHS"
+        If (dshs.Count = 0) Then
+            lisths.Enabled = False
+            btnthem.Enabled = False
+        Else
+            lisths.DataSource = dshs
+            lisths.DisplayMember = "HoTen"
+            lisths.ValueMember = "MaHS"
+        End If
+        
 
         'tinh so hoc sinh con trong cua lop dang chon
 

@@ -39,6 +39,9 @@ Public Class frmxemdslop
         start = 0
         endpage = PAGE_SIZE - 1
         For i As Integer = start To endpage
+            If (ds.Count = i) Then
+                Exit For
+            End If
             girdds.Rows.Add(i + 1, ds(i).HoTen, ds(i).GioiTinh, ds(i).NgaySinh.Year, ds(i).DiaChi)
         Next
         setnavigationstate()
