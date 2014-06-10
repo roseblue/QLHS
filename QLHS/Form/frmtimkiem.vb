@@ -1,5 +1,5 @@
 ﻿Imports DTO
-Imports DAO
+Imports BUS
 Public Class frmtimkiem
     Dim ds As List(Of HocSinhDTO)
     Const PAGE_SIZE As Integer = 6
@@ -22,7 +22,7 @@ Public Class frmtimkiem
         Dim hs As New HocSinhDTO
         hs.HoTen = txtht.Text
         hs.MaLop = cblop.SelectedValue
-        ds = HocSinhDAO.TimKiem(hs)
+        ds = HocSinhBUS.TimKiem(hs)
         numberofpages = Math.Ceiling(ds.Count() / PAGE_SIZE)
         lbpaing.Text = String.Format("{0}/{1}", curPage, numberofpages)
         gridhs.Rows.Clear()
@@ -36,7 +36,7 @@ Public Class frmtimkiem
 
     Private Sub frmtimkiem_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Dim dslophoc As List(Of LopDTO) = LopDAO.laylop()
+        Dim dslophoc As List(Of LopDTO) = LopBUS.layLop()
 
         cblop.DataSource = dslophoc
         cblop.DisplayMember = "TenLop"

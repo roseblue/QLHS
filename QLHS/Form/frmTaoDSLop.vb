@@ -1,4 +1,4 @@
-﻿Imports DAO
+﻿Imports BUS
 Imports DTO
 Public Class frmTaoDSLop
     Dim sohstoida As Integer
@@ -15,14 +15,14 @@ Public Class frmTaoDSLop
 
     Private Sub frmTaoDSLop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'tao combobox
-        Dim dslophoc As List(Of LopDTO) = LopDAO.laylop()
+        Dim dslophoc As List(Of LopDTO) = LopBUS.layLop()
 
         cblop.DataSource = dslophoc
         cblop.DisplayMember = "TenLop"
         cblop.ValueMember = "MaLop"
 
         'lay ds hoc sinh chua co lop
-        dshs = HocSinhDAO.layhocsinhchuacolop()
+        dshs = HocSinhBUS.layhocsinhchuacolop()
 
         lisths.DataSource = dshs
         lisths.DisplayMember = "HoTen"
@@ -30,8 +30,8 @@ Public Class frmTaoDSLop
 
         'tinh so hoc sinh con trong cua lop dang chon
 
-        sohshienco = LopDAO.laysosshienco(cblop.SelectedValue)
-        sohstoida = QuyDinhDAO.layquydinh(1)
+        sohshienco = LopBUS.laysosshienco(cblop.SelectedValue)
+        sohstoida = QuyDinhBUS.layQuyDinh(3).Find(Function(x) x.TenQuyDinh = "Sỉ số tối đa").NoiDung
         slhscon = sohstoida - sohshienco
 
         'clear 
@@ -107,7 +107,7 @@ Public Class frmTaoDSLop
    
 
     Private Sub btnnhap_Click(sender As Object, e As EventArgs) Handles btnnhap.Click
-        Dim check As Integer = HocSinhDAO.capnhaplopchohocsinh(layhocsinhs, cblop.SelectedValue)
+        Dim check As Integer = HocSinhBUS.capnhaplopchohocsinh(layhocsinhs, cblop.SelectedValue)
         If check = 1 Then
             MessageBox.Show("Thêm danh sách lớp thành công", "Thông Báo")
             layhocsinhs.Clear()
@@ -130,7 +130,7 @@ Public Class frmTaoDSLop
 
   
     Private Sub cblop_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cblop.SelectionChangeCommitted
-        sohshienco = LopDAO.laysosshienco(cblop.SelectedValue)
+        sohshienco = LopBUS.laysosshienco(cblop.SelectedValue)
         slhscon = sohstoida - sohshienco
     End Sub
 

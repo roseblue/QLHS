@@ -1,4 +1,4 @@
-﻿Imports DAO
+﻿Imports BUS
 Imports DTO
 Public Class frmxemdslop
     Dim ds As List(Of HocSinhDTO)
@@ -17,13 +17,13 @@ Public Class frmxemdslop
 
     Private Sub frmxemdslop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'tao combobox
-        Dim dslophoc As List(Of LopDTO) = LopDAO.laylop()
+        Dim dslophoc As List(Of LopDTO) = LopBUS.laylop()
       
         cblop.DataSource = dslophoc
         cblop.DisplayMember = "TenLop"
         cblop.ValueMember = "MaLop"
 
-        txtss.Text = LopDAO.laysosshienco(cblop.SelectedValue)
+        txtss.Text = LopBUS.laysosshienco(cblop.SelectedValue)
 
         lbpaing.Text = "0/0"
         setnavigationstate()
@@ -32,7 +32,7 @@ Public Class frmxemdslop
     End Sub
 
     Public Sub loadds(ByVal malop As Integer)
-        ds = HocSinhDAO.layhocsinhtheolop(malop)
+        ds = HocSinhBUS.layhocsinhtheolop(malop)
         numberofpages = Math.Ceiling(ds.Count() / PAGE_SIZE)
         lbpaing.Text = String.Format("{0}/{1}", curPage, numberofpages)
         girdds.Rows.Clear()
@@ -106,7 +106,7 @@ Public Class frmxemdslop
     End Sub
 
     Private Sub cblop_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles cblop.SelectionChangeCommitted
-        txtss.Text = LopDAO.laysosshienco(cblop.SelectedValue)
+        txtss.Text = LopBUS.laysosshienco(cblop.SelectedValue)
         loadds(cblop.SelectedValue)
     End Sub
 End Class

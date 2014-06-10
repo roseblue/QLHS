@@ -1,5 +1,5 @@
 ﻿Imports DTO
-Imports DAO
+Imports BUS
 Public Class frmthemlop
 
     Private Sub btnthoat_Click(sender As Object, e As EventArgs) Handles btnthoat.Click
@@ -7,7 +7,7 @@ Public Class frmthemlop
     End Sub
 
     Private Sub frmthemlop_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim dskhoi As List(Of KhoiDTO) = KhoiDAO.laykhoi()
+        Dim dskhoi As List(Of KhoiDTO) = KhoiBUS.laykhoi()
 
         cbkhoi.DataSource = dskhoi
         cbkhoi.DisplayMember = "TenKhoi"
@@ -22,7 +22,7 @@ Public Class frmthemlop
             MessageBox.Show("Chưa nhập tên lớp", "Thông Báo")
             Return
         End If
-        Dim check As Integer = LopDAO.themlop(txttenlop.Text, cbkhoi.SelectedValue)
+        Dim check As Integer = LopBUS.themlop(txttenlop.Text, cbkhoi.SelectedValue)
         If check = 1 Then
             MessageBox.Show("Thêm thành công", "Thông Báo")
             txttenlop.Text = ""
