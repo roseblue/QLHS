@@ -6,9 +6,10 @@ Public Class QuyDinhDAO
         Dim cmd As SqlCommand
         If (type = 1) Then
             cmd = New SqlCommand("select * from QuyDinh where TenQD = N'Tuổi nhỏ nhất' or TenQD = N'Tuổi lớn nhất'", conn)
-        Else
+        ElseIf type = 2 Then
             cmd = New SqlCommand("select * from quydinh where TenQD = N'Điểm đạt môn'", conn)
-
+        Else
+            cmd = New SqlCommand("select * from quydinh where tenqd = N'Sỉ số tối đa'", conn)
         End If
 
         conn.Open()
@@ -39,4 +40,5 @@ Public Class QuyDinhDAO
         kq = cmd.ExecuteNonQuery()
         conn.Close()
         Return kq
+    End Function
 End Class

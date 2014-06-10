@@ -25,12 +25,11 @@ Public Class HocSinhDAO
         Return dshs
     End Function
     Public Shared Function capnhaplopchohocsinh(ByVal arr As ArrayList, ByVal malop As Integer) As Integer
-        Dim slhsgioihan As Integer = QuyDinhDAO.layquydinh(1)
+        Dim dt As List(Of QuyDinhDTO) = QuyDinhDAO.layQuyDinh(3)
+        Dim slhsgioihan As Integer = dt.Find(Function(x) x.TenQuyDinh = "Sỉ số tối đa").NoiDung
         Dim sisolop As Integer = LopDAO.laysosshienco(malop)
         Dim check As Integer = 0
         Dim count As Integer = 0
-        Dim sql As String
-        Dim cmd As SqlCommand
         Dim conn As SqlConnection = DataProvider.getConnection()
         conn.Open()
         Dim command As SqlCommand = conn.CreateCommand()

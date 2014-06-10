@@ -28,7 +28,7 @@ Public Class LopDAO
         Dim sohs = 0
         Dim sql = "select SiSo from Lop where MaLop = " & malop
         Dim conn As SqlConnection
-        conn = DataProvider.ConnectDB()
+        conn = DataProvider.getConnection()
         Dim cmd As New SqlCommand(sql, conn)
         Dim reader As SqlDataReader = cmd.ExecuteReader()
         With reader.Read()
